@@ -1,4 +1,4 @@
-package br.com.kentec.megatron.modelo;
+package br.com.kentec.megatron.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,10 +14,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="analise_inicial")
+@Table(name="mao_de_obra")
 @SuppressWarnings("serial")
-public class AnaliseInicial implements Serializable {
-	
+public class MaoDeObra implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", nullable = false, length = 11)
@@ -28,13 +28,17 @@ public class AnaliseInicial implements Serializable {
 	private String descricao;
 	
 	@ManyToOne
-	@JoinColumn(name="id_veiculo", nullable = true)
+	@JoinColumn(name="id_veiculo", nullable = false)
 	private Veiculo veiculo = new Veiculo();
 	
-	@Column(name="mao_de_obra")
-	private BigDecimal maoDeObra;
+	@ManyToOne
+	@JoinColumn(name="id_orcamento", nullable = false)
+	private Orcamento orcamento = new Orcamento();
+	
+	@Column(name="valor")
+	private BigDecimal valor;
 
-	public AnaliseInicial() {}
+	public MaoDeObra() {}
 
 	public Long getId() {
 		return id;
@@ -59,18 +63,26 @@ public class AnaliseInicial implements Serializable {
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
-	
-	public BigDecimal getMaoDeObra() {
-		return maoDeObra;
+
+	public Orcamento getOrcamento() {
+		return orcamento;
 	}
 
-	public void setMaoDeObra(BigDecimal maoDeObra) {
-		this.maoDeObra = maoDeObra;
+	public void setOrcamento(Orcamento orcamento) {
+		this.orcamento = orcamento;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	@Override
 	public String toString() {
-		return "InvestigaçãoInicial [id=" + id + ", descricao=" + descricao + ", veiculo=" + veiculo + ", maoDeObra="
-				+ maoDeObra + "]";
+		return "MaoDeObra [id=" + id + ", descricao=" + descricao + ", veiculo=" + veiculo + ", orcamento=" + orcamento
+				+ ", valor=" + valor + "]";
 	}
 }

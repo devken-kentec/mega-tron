@@ -1,7 +1,6 @@
-package br.com.kentec.megatron.modelo;
+package br.com.kentec.megatron.domain;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,17 +21,11 @@ public class Pecas implements Serializable {
 	@Column(name="id", nullable = false, length = 11)
 	private Long id;
 	
-	@Column(name="unidade_medida", nullable = true, length = 2)
+	@Column(name="unidade_medida", nullable = true, length = 12)
 	private String undidadeMedida;
 	
 	@Column(name="descricao", nullable = true, length = 256)
 	private String descricao;
-	
-	@Column(name="valor_unitario", nullable = true, precision = 10, scale = 2)
-	private BigDecimal valorUnitario;
-	
-	@Column(name="valor_desconto", nullable = true, precision = 10, scale = 2)
-	private BigDecimal valorDesconto;
 	
 	@Column(name="marca", nullable = false, length = 50)
 	private String marca;
@@ -42,14 +35,6 @@ public class Pecas implements Serializable {
 	
 	@Column(name="codigo_referencia", nullable = false, length = 50)
 	private String codigoRefencia;
-	
-	public AutoPeca getAutopeca() {
-		return autopeca;
-	}
-
-	public void setAutopeca(AutoPeca autopeca) {
-		this.autopeca = autopeca;
-	}
 
 	@ManyToOne
 	@JoinColumn(name="id_autopeca", nullable = true)
@@ -84,14 +69,6 @@ public class Pecas implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public BigDecimal getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(BigDecimal valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
 	public String getMarca() {
 		return marca;
 	}
@@ -123,20 +100,19 @@ public class Pecas implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public BigDecimal getValorDesconto() {
-		return valorDesconto;
+	
+	public AutoPeca getAutopeca() {
+		return autopeca;
 	}
 
-	public void setValorDesconto(BigDecimal valorDesconto) {
-		this.valorDesconto = valorDesconto;
+	public void setAutopeca(AutoPeca autopeca) {
+		this.autopeca = autopeca;
 	}
 
 	@Override
 	public String toString() {
-		return "Pecas [id=" + id + ", undidadeMedida=" + undidadeMedida + ", descricao=" + descricao
-				+ ", valorUnitario=" + valorUnitario + ", valorDesconto=" + valorDesconto + ", marca=" + marca
-				+ ", modelo=" + modelo + ", codigoRefencia=" + codigoRefencia + ", autopeca=" + autopeca + ", status="
-				+ status + "]";
+		return "Pecas [id=" + id + ", undidadeMedida=" + undidadeMedida + ", descricao=" + descricao + ", marca="
+				+ marca + ", modelo=" + modelo + ", codigoRefencia=" + codigoRefencia + ", autopeca=" + autopeca
+				+ ", status=" + status + "]";
 	}
 }

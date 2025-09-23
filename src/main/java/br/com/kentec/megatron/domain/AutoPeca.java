@@ -1,4 +1,4 @@
-package br.com.kentec.megatron.modelo;
+package br.com.kentec.megatron.domain;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="autopeca")
+@Table(name="auto_peca")
 @SuppressWarnings("serial")
 public class AutoPeca implements Serializable  {
 	

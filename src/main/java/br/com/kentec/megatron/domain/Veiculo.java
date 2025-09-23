@@ -1,4 +1,4 @@
-package br.com.kentec.megatron.modelo;
+package br.com.kentec.megatron.domain;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -37,6 +37,9 @@ public class Veiculo implements Serializable {
 	
 	@Column(name="combustivel", nullable = false, length = 20)
 	private String combustivel;
+	
+	@Column(name="ano", nullable = true, length = 4)
+	private Integer ano;
 	
 	@Column(name="status", nullable = true, length = 7)
 	private String status;
@@ -107,6 +110,14 @@ public class Veiculo implements Serializable {
 		this.combustivel = combustivel;
 	}
 
+	public Integer getAno() {
+		return ano;
+	}
+
+	public void setAno(Integer ano) {
+		this.ano = ano;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -126,7 +137,7 @@ public class Veiculo implements Serializable {
 	@Override
 	public String toString() {
 		return "Veiculo [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", cor=" + cor + ", placa=" + placa
-				+ ", combustivel=" + combustivel + ", status=" + status + ", foto=" + Arrays.toString(foto)
-				+ ", proprietario=" + proprietario + "]";
+				+ ", combustivel=" + combustivel + ", ano=" + ano + ", status=" + status + ", foto="
+				+ Arrays.toString(foto) + ", proprietario=" + proprietario + "]";
 	}
 }
