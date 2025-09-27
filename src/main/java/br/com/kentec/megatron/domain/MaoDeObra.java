@@ -28,10 +28,6 @@ public class MaoDeObra implements Serializable {
 	private String descricao;
 	
 	@ManyToOne
-	@JoinColumn(name="id_veiculo", nullable = false)
-	private Veiculo veiculo = new Veiculo();
-	
-	@ManyToOne
 	@JoinColumn(name="id_orcamento", nullable = false)
 	private Orcamento orcamento = new Orcamento();
 	
@@ -56,14 +52,6 @@ public class MaoDeObra implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
-
 	public Orcamento getOrcamento() {
 		return orcamento;
 	}
@@ -78,11 +66,5 @@ public class MaoDeObra implements Serializable {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
-	}
-
-	@Override
-	public String toString() {
-		return "MaoDeObra [id=" + id + ", descricao=" + descricao + ", veiculo=" + veiculo + ", orcamento=" + orcamento
-				+ ", valor=" + valor + "]";
 	}
 }

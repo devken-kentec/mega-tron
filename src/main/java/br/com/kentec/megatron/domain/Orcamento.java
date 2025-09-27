@@ -29,8 +29,8 @@ public class Orcamento implements Serializable {
 	private Boolean osAprovado;
 	
 	@ManyToOne
-	@JoinColumn(name="id_veiculo", nullable = true)
-	private Veiculo veiculo = new Veiculo();
+	@JoinColumn(name="id_dados_veiculo", nullable = false)
+	private DadosVeiculo dadosVeiculo= new DadosVeiculo();
 	
 	@Column(name="status", nullable = true, length = 7)
 	private String status;
@@ -69,9 +69,17 @@ public class Orcamento implements Serializable {
 		this.status = status;
 	}
 
+	public DadosVeiculo getDadosVeiculo() {
+		return dadosVeiculo;
+	}
+
+	public void setDadosVeiculo(DadosVeiculo dadosVeiculo) {
+		this.dadosVeiculo = dadosVeiculo;
+	}
+
 	@Override
 	public String toString() {
-		return "Orcamento [id=" + id + ", dataOrcamento=" + dataOrcamento + ", osAprovado=" + osAprovado + ", status="
-				+ status + "]";
+		return "Orcamento [id=" + id + ", dataOrcamento=" + dataOrcamento + ", osAprovado=" + osAprovado
+				+ ", dadosVeiculo=" + dadosVeiculo + ", status=" + status + "]";
 	}
 }
