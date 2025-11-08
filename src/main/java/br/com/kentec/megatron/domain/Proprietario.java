@@ -50,7 +50,7 @@ public class Proprietario implements Serializable {
 	@Column(name="chave_usuario", nullable = false, length = 64)
 	private String chaveUsuario;
 	
-	@Column(name="senha_usuario", nullable = false, length = 128)
+	@Column(name="senha_usuario", nullable = true, length = 128)
 	private String senhaUsuario;
 	
 	@Column(name="role", nullable = true, length = 16)

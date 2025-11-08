@@ -37,7 +37,7 @@ public class DadosVeiculo implements Serializable {
 	
 	@Lob
 	@Column(name="foto")
-	public byte[] foto;
+	private byte[] foto;
 	
 	@ManyToOne
 	@JoinColumn(name="id_proprietario", nullable = false)
@@ -46,6 +46,9 @@ public class DadosVeiculo implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_veiculo", nullable = false)
 	private Veiculo veiculo = new Veiculo();
+	
+	@Column(name="status", nullable = true, length = 7)
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -111,10 +114,18 @@ public class DadosVeiculo implements Serializable {
 		this.veiculo = veiculo;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "DadosVeiculo [id=" + id + ", cor=" + cor + ", placa=" + placa + ", combustivel=" + combustivel
 				+ ", ano=" + ano + ", foto=" + Arrays.toString(foto) + ", proprietario=" + proprietario + ", veiculo="
-				+ veiculo + "]";
+				+ veiculo + ", status=" + status + "]";
 	}
 }

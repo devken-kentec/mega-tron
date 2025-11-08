@@ -16,36 +16,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.kentec.megatron.domain.Proprietario;
-import br.com.kentec.megatron.service.ProprietarioService;
+import br.com.kentec.megatron.domain.Veiculo;
+import br.com.kentec.megatron.service.VeiculoService;
 
 @CrossOrigin(origins = "${origin.cors.url}", maxAge = 3600)
 @RestController
-@RequestMapping("/rtmec-kentec-6a6b6c2d6b656e7465632d32303235/api/proprietario/v1")
-public class ProprietarioController {
+@RequestMapping("/rtmec-kentec-6a6b6c2d6b656e7465632d32303235/api/veiculo/v1")
+public class VeiculoController {
 	
 	@Autowired
-	private ProprietarioService ps;
+	private VeiculoService vs;
 	
-	@GetMapping("/buscarClientePorId/{id}")
-	public ResponseEntity<Optional<Proprietario>> findById(@RequestHeader("Token") String token, @PathVariable Long id) {
-		return ResponseEntity.ok(ps.findById(token, id));
+	@GetMapping("/buscarVeiculoPorId/{id}")
+	public ResponseEntity<Optional<Veiculo>> findById(@RequestHeader("Token") String token, @PathVariable Long id) {
+		return ResponseEntity.ok(vs.findById(token, id));
 	}
 	
-	@GetMapping("/listarClientes")
-	public ResponseEntity<Iterable<Proprietario>> listarTodosProprietarios(@RequestHeader("Token") String token){
-		return ResponseEntity.ok(ps.findAll(token));
+	@GetMapping("/listarVeiculos")
+	public ResponseEntity<Iterable<Veiculo>> listarTodosVeiculos(@RequestHeader("Token") String token){
+		return ResponseEntity.ok(vs.findAll(token));
 	}
-	
+		
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
-	public void salvar(@RequestHeader("Token") String token, @RequestBody Proprietario proprietario) {
-		ps.salvar(token, proprietario);
+	public void salvar(@RequestHeader("Token") String token, @RequestBody Veiculo veiculo) {
+		vs.salvar(token, veiculo);
 	}
 	
 	@PutMapping()
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void alterar(@RequestHeader("Token") String token, @RequestBody Proprietario proprietario) {
-		ps.alterar(token, proprietario);
+	public void alterar(@RequestHeader("Token") String token, @RequestBody Veiculo veiculo) {
+		vs.alterar(token, veiculo);
 	}
 }
