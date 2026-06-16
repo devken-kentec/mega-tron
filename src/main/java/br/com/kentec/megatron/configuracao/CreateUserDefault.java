@@ -9,12 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.kentec.megatron.domain.Proprietario;
-import br.com.kentec.megatron.repository.ProprietarioRepository;
+import br.com.kentec.megatron.domain.User;
 import br.com.kentec.megatron.util.Comum;
 
 
-@Configuration
+/*@Configuration
 @Profile("dev")
 public class CreateUserDefault {
 	
@@ -38,4 +37,4 @@ public class CreateUserDefault {
 			}
 		};
 	}
-}
+}*/

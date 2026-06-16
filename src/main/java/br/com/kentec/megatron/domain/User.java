@@ -1,7 +1,7 @@
 package br.com.kentec.megatron.domain;
 
 import java.io.Serializable;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,17 +10,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="auto_peca")
+@Table(name="User" )
 @SuppressWarnings("serial")
-public class AutoPeca implements Serializable  {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable = false, length = 11)
+	@Column(name="id", nullable = false)
 	private Long id;
 	
-	@Column(name="loja", nullable = true, length = 64)
-	private String loja;
+	@Column(name="nome", nullable = true, length = 16)
+	private String nome;
+	
+	@Column(name="apelido", nullable = true, length = 16)
+	private String apelido;
+	
+	@Column(name="data_nascimento", nullable = true, length = 10)
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private String dataNascimento;
 	
 	@Column(name="fone", nullable = true, length = 20)
 	private String fone;
@@ -40,13 +47,19 @@ public class AutoPeca implements Serializable  {
 	@Column(name="complemento", nullable = true, length = 128)
 	private String complemento;
 	
-	@Column(name="vendedor", nullable = true, length = 32)
-	private String vendedor;
+	@Column(name="chave_usuario", nullable = false, length = 64)
+	private String chaveUsuario;
 	
+	@Column(name="senha_usuario", nullable = true, length = 128)
+	private String senhaUsuario;
+	
+	@Column(name="role", nullable = true, length = 16)
+	private String role; 
+
 	@Column(name="status", nullable = true, length = 7)
-	private String status;
+	private String status; 
 	
-	public AutoPeca() {}
+	public User() {}
 
 	public Long getId() {
 		return id;
@@ -56,12 +69,28 @@ public class AutoPeca implements Serializable  {
 		this.id = id;
 	}
 
-	public String getLoja() {
-		return loja;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setLoja(String loja) {
-		this.loja = loja;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getFone() {
@@ -112,14 +141,6 @@ public class AutoPeca implements Serializable  {
 		this.complemento = complemento;
 	}
 
-	public String getVendedor() {
-		return vendedor;
-	}
-
-	public void setVendedor(String vendedor) {
-		this.vendedor = vendedor;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -127,13 +148,37 @@ public class AutoPeca implements Serializable  {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public String getChaveUsuario() {
+		return chaveUsuario;
+	}
+
+	public void setChaveUsuario(String chaveUsuario) {
+		this.chaveUsuario = chaveUsuario;
+	}
+	
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "AutoPeca [id=" + id + ", loja=" + loja + ", fone=" + fone + ", whatsapp=" + whatsapp + ", email="
-				+ email + ", cep=" + cep + ", endereco=" + endereco + ", complemento=" + complemento + ", vendedor="
-				+ vendedor + ", status=" + status + "]";
+		return "User [id=" + id + ", nome=" + nome + ", apelido=" + apelido + ", dataNascimento="
+				+ dataNascimento + ", fone=" + fone + ", whatsapp=" + whatsapp + ", email=" + email + ", cep=" + cep
+				+ ", endereco=" + endereco + ", complemento=" + complemento + ", chaveUsuario=" + chaveUsuario
+				+ ", senhaUsuario=" + senhaUsuario + ", role=" + role + ", status=" + status + "]";
 	}
-	
-	
+
 }
