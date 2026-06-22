@@ -29,7 +29,7 @@ public class Comum {
 
 	public static String gerarSenhaAleatoria() {
 		Random random = new Random();
-		Integer senhaAle = random.nextInt(1000, 9999);
+		Integer senhaAle = random.nextInt(9999);
 		return senhaAle.toString();
 	}
 
