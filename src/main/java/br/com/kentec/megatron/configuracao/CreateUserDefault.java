@@ -10,31 +10,32 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.kentec.megatron.domain.User;
+import br.com.kentec.megatron.repository.UserRepository;
 import br.com.kentec.megatron.util.Comum;
 
 
-/*@Configuration
+@Configuration
 @Profile("dev")
 public class CreateUserDefault {
 	
 	@Autowired
-	private ProprietarioRepository pr;
+	private UserRepository ur;
 
 	@Bean
 	@Transactional
 	CommandLineRunner executar() {
 		return args -> {
-			long users = pr.count();
+			long users = ur.count();
 			if(users == 0) {
-				Proprietario user = new Proprietario();
+				User user = new User();
 				user.setNome("Kennedy Tomazete");
 				user.setEmail("contato@kentec.com.br");
 				user.setRole("DEV-SYSTEM");
 				user.setStatus("Ativo");
 				user.setSenhaUsuario(Comum.encrypt("devken"));
 				user.setChaveUsuario(UUID.randomUUID().toString());
-				pr.save(user);
+				ur.save(user);
 			}
 		};
 	}
-}*/
+}

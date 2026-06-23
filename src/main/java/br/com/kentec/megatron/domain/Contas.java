@@ -10,14 +10,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="contas" )
 @SuppressWarnings("serial")
 public class Contas implements Serializable{
-	
-	//301.764.251-87
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,10 @@ public class Contas implements Serializable{
 	
 	@Column(name="valor", precision = 15, scale = 2, nullable = false)
 	private BigDecimal valor;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_user", nullable = true)
+	private User user = new User();
 	
 	public Contas() {
 		
@@ -93,9 +97,17 @@ public class Contas implements Serializable{
 		this.valor = valor;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Contas [id=" + id + ", descricao=" + descricao + ", natureza=" + natureza + ", data=" + data
-				+ ", dataVencimento=" + dataVencimento + ", valor=" + valor + "]";
+				+ ", dataVencimento=" + dataVencimento + ", valor=" + valor + ", user=" + user+ "]";
 	}
 }
