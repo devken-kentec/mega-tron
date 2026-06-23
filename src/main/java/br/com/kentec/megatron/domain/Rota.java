@@ -12,10 +12,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="item_categoria" )
+@Table(name="rota" )
 @SuppressWarnings("serial")
-public class ItemCategoria implements Serializable {
-		
+public class Rota implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", nullable = false)
@@ -24,6 +24,12 @@ public class ItemCategoria implements Serializable {
 	@Column(name="descricao", nullable = true, length = 32)
 	private String descricao;
 	
+	@Column(name="ponto_referencia", nullable = true, length = 64)
+	private String pontoReferencia;
+	
+	@Column(name="link", nullable = true, length = 256)
+	private String link;
+	
 	@Column(name="status", nullable = true, length = 8)
 	private String status;
 	
@@ -31,7 +37,7 @@ public class ItemCategoria implements Serializable {
 	@JoinColumn(name = "id_user", nullable = true)
 	private User user = new User();
 	
-	public ItemCategoria() {}
+	public Rota() {}
 
 	public Long getId() {
 		return id;
@@ -47,6 +53,22 @@ public class ItemCategoria implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getPontoReferencia() {
+		return pontoReferencia;
+	}
+
+	public void setPontoReferencia(String pontoReferencia) {
+		this.pontoReferencia = pontoReferencia;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public String getStatus() {
@@ -67,6 +89,7 @@ public class ItemCategoria implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ItemCategoria [id=" + id + ", descricao=" + descricao + ", status=" + status + ", user=" + user + "]";
+		return "Rota [id=" + id + ", descricao=" + descricao + ", pontoReferencia=" + pontoReferencia + ", link=" + link
+				+ ", status=" + status + ", user=" + user + "]";
 	}
 }

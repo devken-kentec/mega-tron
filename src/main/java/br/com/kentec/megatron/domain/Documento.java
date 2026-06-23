@@ -12,10 +12,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="item_categoria" )
+@Table(name="documento" )
 @SuppressWarnings("serial")
-public class ItemCategoria implements Serializable {
-		
+public class Documento implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id", nullable = false)
@@ -31,7 +31,7 @@ public class ItemCategoria implements Serializable {
 	@JoinColumn(name = "id_user", nullable = true)
 	private User user = new User();
 	
-	public ItemCategoria() {}
+	public Documento() {}
 
 	public Long getId() {
 		return id;
@@ -67,6 +67,6 @@ public class ItemCategoria implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ItemCategoria [id=" + id + ", descricao=" + descricao + ", status=" + status + ", user=" + user + "]";
+		return "Documento [id=" + id + ", descricao=" + descricao + ", status=" + status + ", user=" + user + "]";
 	}
-}
+}	

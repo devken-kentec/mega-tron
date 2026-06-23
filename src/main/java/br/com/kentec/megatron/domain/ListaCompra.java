@@ -31,6 +31,10 @@ public class ListaCompra implements Serializable {
 	@JoinColumn(name = "id_item_categoria", nullable = true)
 	private ItemCategoria itemCategoria = new ItemCategoria();
 	
+	@ManyToOne
+	@JoinColumn(name = "id_user", nullable = true)
+	private User user = new User();
+	
 	public ListaCompra() {}
 
 	public Long getId() {
@@ -65,9 +69,17 @@ public class ListaCompra implements Serializable {
 		this.itemCategoria = itemCategoria;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "ListaCompra [id=" + id + ", item=" + item + ", status=" + status + ", itemCategoria=" + itemCategoria
-				+ "]";
+				+ ", user=" + user + "]";
 	}
 }
