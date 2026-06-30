@@ -53,6 +53,9 @@ public class User implements Serializable {
 	@Column(name="senha_usuario", nullable = true, length = 128)
 	private String senhaUsuario;
 	
+	@Column(name="pin", nullable = true, length = 128)
+	private String pin;
+	
 	@Column(name="role", nullable = true, length = 16)
 	private String role; 
 
@@ -173,12 +176,19 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", nome=" + nome + ", apelido=" + apelido + ", dataNascimento="
-				+ dataNascimento + ", fone=" + fone + ", whatsapp=" + whatsapp + ", email=" + email + ", cep=" + cep
-				+ ", endereco=" + endereco + ", complemento=" + complemento + ", chaveUsuario=" + chaveUsuario
-				+ ", senhaUsuario=" + senhaUsuario + ", role=" + role + ", status=" + status + "]";
+	public String getPin() {
+		return pin;
 	}
 
+	public void setPin(String pin) {
+		this.pin = pin;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", nome=" + nome + ", apelido=" + apelido + ", dataNascimento=" + dataNascimento
+				+ ", fone=" + fone + ", whatsapp=" + whatsapp + ", email=" + email + ", cep=" + cep + ", endereco="
+				+ endereco + ", complemento=" + complemento + ", chaveUsuario=" + chaveUsuario + ", senhaUsuario="
+				+ senhaUsuario + ", pin=" + pin + ", role=" + role + ", status=" + status + "]";
+	}
 }
